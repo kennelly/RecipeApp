@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import './Recipe.css';
+import PropTypes from 'prop-types';
 
 class Recipe extends Component {
-    static defaultProps = {
-        recipes: [{
-            title: "Spaghetti",
-            ingredients: ['flour', 'water'],
-            img: "https://images.unsplash.com/photo-1516685018646-549198525c1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-            instructions: "Mix Ingredients"
-        }]
-    }
+    static propTypes = {
+        title: PropTypes.string.isRequired,
+        ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+        instructions: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired
+    } 
     render(){
         const {title, img, instructions} = this.props;
         const ingredients = this.props.ingredients.map((ing, index) => (
